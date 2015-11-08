@@ -1,0 +1,194 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="shortcut icon" href="images/logo1.ico" type="image/x-icon" />
+<title>登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Fashionpress Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/login-style.css" rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+<script>
+	$(function() {
+		$("input[id='key']").change(
+				function() {
+					$('#indexkey').attr('href',
+							"search.html?bookname=" + $('#key').val());
+				});
+	});
+</script>
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(
+					function() {	
+						
+		$.getJSON("IndexQuery",function(jsonData) {
+											var uname="";
+											var denglu="";
+											var chaolianjie="";
+											var tuichu="";
+											for (var i = 0; i < jsonData.length; i++) {
+												//alert("ahdfkahdukhna");
+												uname=jsonData[i].username;
+												denglu=jsonData[i].denglu;
+												chaolianjie=jsonData[i].chaolianjie;
+												tuichu=jsonData[i].tuichu;
+											}
+											
+											$("#zhuce").html(uname);
+											$("#denglu").text(denglu);
+											$("#chaolianjie").attr("href",""+chaolianjie+"");
+											$("#tuichu").attr("href",""+tuichu+"");
+											
+			});
+		});
+</script>
+					
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.getJSON("LoginQuery", function(jsonData) {
+
+			//alert(jsonData.auto);
+			//alert(jsonData.username);
+			//alert(jsonData.password);
+			if (jsonData.auto) {
+				$("input[id='username']").val(jsonData.username);
+				$("input[id='password']").val(jsonData.password);
+				$("input[name='check']").attr("checked", "checked");
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="header">
+		<div class="header_top">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo1.png" alt="" /></a>
+				</div>
+				<ul class="shopping_grid">
+					<a id="chaolianjie" href="register.html">
+						<li id="zhuce">注册</li>
+					</a>
+
+					<a  id="tuichu" href="login.html">
+						<li id="denglu">登录</li>
+					</a>
+					
+					<div class="clearfix"></div>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="h_menu4">
+			<!-- start h_menu4 -->
+			<div class="container">
+				<a class="toggleMenu" href="#">菜单</a>
+				<ul class="nav">
+					<li class="active"><a href="index.html" data-hover="Home">&emsp;&emsp;&emsp;首页&emsp;&emsp;&emsp;</a></li>
+					<li><a href="search.html" data-hover="Search">&emsp;&emsp;&emsp;球队概况&emsp;&emsp;&emsp;</a></li>
+					<li><a href="subscribe.html" data-hover="Subscribe">&emsp;&emsp;&emsp;球员&emsp;&emsp;&emsp;</a></li>
+					<li><a href="careers.html" data-hover="careers">&emsp;&emsp;&emsp;在线商店&emsp;&emsp;&emsp;</a></li>
+					<li><a href="contact.html" data-hover="Contact">&emsp;&emsp;&emsp;&emsp;官方论坛&emsp;</a></li>
+				</ul>
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div>
+			<!-- end h_menu4 -->
+		</div>
+	</div>
+	
+	<div class="about"
+		style="background-image: url(images/bg-2.jpg); font-family: 微软雅黑, sans-serif;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-2"></div>
+				<div class="col-lg-6 col-md-8 col-xs-12 login-box"
+					style="background: url(images/login-back.png) no-repeat 0px 0px; background-size: cover; text-align: center; padding: 3em; margin: 0 auto 0 auto;">
+					<h2>请登录</h2>
+					<form action="Login" method="post">
+						<div class="form-group">
+							<input type="text" class="text" name="username" id="username">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" id="password">
+						</div>
+						<div class="form-group">
+							<div class="check-box">
+								<div class="slideThree">
+									<input type="checkbox" id="slideThree" name="check" checked="" />
+									
+									<label for="slideThree"> </label>
+								</div>
+							</div>
+							<div class="remember">
+								<p style="color: rgba(255, 255, 255, 1.00)">
+									&emsp;<a style="color: rgba(255, 255, 255, 1.00)">记住密码</a>&emsp;<a
+										href="forgetpwd.html" style="color: rgba(255, 255, 255, 1.00)">忘记密码</a>
+								</p>
+							</div>
+						</div>
+						<div class="btn form-group">
+							<input type="submit" value="登录">
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-3 col-md-2"></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bg"></div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xs-12 f_grid1">
+					<h3 style="margin-left: 1em;">关于我们</h3>
+					<a href="index.html" style="margin-left: 1.5em;"><img
+						src="images/logo1.png" height="20" width="auto" alt="" /></a>
+					<p style="text-indent: 2em;"></p>
+				</div>
+				<div class="col-md-6 col-xs-12 f_grid3">
+					<h3 style="margin-left: 1em;">联系我们</h3>
+					<ul class="list">
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-top: 1em; margin-left: 2em;">Phone
+								: 12345678901</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">
+								E-mail : <a href="mailto:info(at)fashionpress.com">
+									info(at)fashionpress.com</a>
+							</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">&copy;中国矿业大学管理学院&ensp;电子商务</p>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom">
+		<div class="container">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="shortcut icon" href="images/logo1.ico" type="image/x-icon" />
+<title>注册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Fashionpress Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="text/javascript" src="js/jquery-1.11.3.js">
+	
+</script>
+<script>
+	$(function() {
+		$("input[id='key']").change(
+				function() {
+					$('#indexkey').attr('href',
+							"search.html?bookname=" + $('#key').val());
+				});
+	});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(
+					function() {	
+						
+		$.getJSON("IndexQuery",function(jsonData) {
+											var uname="";
+											var denglu="";
+											var chaolianjie="";
+											var tuichu="";
+											for (var i = 0; i < jsonData.length; i++) {
+												//alert("ahdfkahdukhna");
+												uname=jsonData[i].username;
+												denglu=jsonData[i].denglu;
+												chaolianjie=jsonData[i].chaolianjie;
+												tuichu=jsonData[i].tuichu;
+											}
+											
+											$("#zhuce").html(uname);
+											$("#denglu").text(denglu);
+											$("#chaolianjie").attr("href",""+chaolianjie+"");
+											$("#tuichu").attr("href",""+tuichu+"");
+											
+			});
+		});
+</script>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#password_input").blur(function() {
+			if ($(this).val() == "") {
+				$(this).val("请输入密码");
+
+				if ($(this).attr("type") == "password") {
+					$(this).hide();
+					$('#password_text').show();
+					$('#password_text').val("请输入密码");
+				} else {
+					var pass = $('#password_text').val();
+
+					if (pass.length < 1) {
+						$(this).hide();
+						$('#password_text').show();
+					}
+				}
+			}
+		});
+		$("#password_text").focus(function() {
+			if ($(this).val() == "请输入密码") {
+				$(this).val("");
+
+				if ($(this).attr("type") == "text") {
+					$(this).hide();
+					$('#password_input').show();
+					$('#password_input').val("");
+					$('#password_input').focus();//加上
+				} else {
+					var pass = $('#password_input').val();
+					if (pass.length < 1) {
+						$(this).hide();
+						$('#password_text').show();
+					}
+				}
+			}
+		})
+	})
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#password_input2").blur(function() {
+			if ($(this).val() == "") {
+				$(this).val("请确认密码");
+
+				if ($(this).attr("type") == "password") {
+					$(this).hide();
+					$('#password_text2').show();
+					$('#password_text2').val("请确认密码");
+				} else {
+					var pass = $('#password_text2').val();
+
+					if (pass.length < 1) {
+						$(this).hide();
+						$('#password_text2').show();
+					}
+				}
+			}
+		});
+		$("#password_text2").focus(function() {
+			if ($(this).val() == "请确认密码") {
+				$(this).val("");
+
+				if ($(this).attr("type") == "text") {
+					$(this).hide();
+					$('#password_input2').show();
+					$('#password_input2').val("");
+					$('#password_input2').focus();//加上
+				} else {
+					var pass = $('#password_input2').val();
+					if (pass.length < 1) {
+						$(this).hide();
+						$('#password_text2').show();
+					}
+				}
+			}
+		})
+	})
+</script>
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<meta name="keywords"
+	content="Web App Login Screen Responsive Templates, Iphone Compatible Templates, Smartphone Compatible Templates, Ipad Compatible Templates, Flat Responsive Templates" />
+<link href="css/register-style.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+</head>
+<body>
+	<div class="header">
+		<div class="header_top">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo1.png" alt="" /></a>
+				</div>
+				<ul class="shopping_grid">
+					<a id="chaolianjie" href="register.html">
+						<li id="zhuce">注册</li>
+					</a>
+
+					<a  id="tuichu" href="login.html">
+						<li id="denglu">登录</li>
+					</a>
+					
+					<div class="clearfix"></div>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="h_menu4">
+			<!-- start h_menu4 -->
+			<div class="container">
+				<a class="toggleMenu" href="#">菜单</a>
+				<ul class="nav">
+					<li class="active"><a href="index.html" data-hover="Home">&emsp;&emsp;&emsp;首页&emsp;&emsp;&emsp;</a></li>
+					<li><a href="search.html" data-hover="Search">&emsp;&emsp;&emsp;球队概况&emsp;&emsp;&emsp;</a></li>
+					<li><a href="subscribe.html" data-hover="Subscribe">&emsp;&emsp;&emsp;球员&emsp;&emsp;&emsp;</a></li>
+					<li><a href="careers.html" data-hover="careers">&emsp;&emsp;&emsp;在线商店&emsp;&emsp;&emsp;</a></li>
+					<li><a href="contact.html" data-hover="Contact">&emsp;&emsp;&emsp;&emsp;官方论坛&emsp;</a></li>
+				</ul>
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div>
+			<!-- end h_menu4 -->
+		</div>
+	</div>
+	
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="about"
+		style="background-image: url(images/bg-2.jpg); font-family: 微软雅黑, sans-serif;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3"></div>
+				<div class="register-box col-lg-6 col-xs-12">
+					<h2>注册</h2>
+					<form method='post' action='Register'>
+						<div class="register-elements form-group">
+							<input type="text" class="text" name="username" id="username"
+								value="请输入用户名" onfocus="this.value = '';"
+								onblur="if (this.value == '') {this.value = '请输入用户名';}">
+						</div>
+						<div class="form-group">
+							<input type="text" class="text" name="email" id="email"
+								value="请输入邮箱" onfocus="this.value = '';"
+								onblur="if (this.value == '') {this.value = '请输入邮箱';}">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" style="display: none;"
+								value="" id="password_input" /> <input type="text" value="请输入密码"
+								id="password_text" />
+						</div>
+						<div class="form-group">
+							<input type="password" name="password2" style="display: none;"
+								value="" id="password_input2" /> <input type="text"
+								value="请确认密码" id="password_text2" />
+						</div>
+						<div class="btn form-group">
+							<input type="submit" onclick="myFunction()" value="确认">
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-3"></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bg"></div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xs-12 f_grid1">
+					<h3 style="margin-left: 1em;">关于我们</h3>
+					<a href="#" style="margin-left: 1.5em;"><img
+						src="images/logo1.png" height="20" width="auto" alt="" /></a>
+					<p style="text-indent: 2em;">哀伤的风格回家看了请问认同与欧赔自行车vb你们啊是的法国航空请问认同与io的风格和健康自行车vb你们更好</p>
+				</div>
+				<div class="col-md-6 col-xs-12 f_grid3">
+					<h3 style="margin-left: 1em;">联系我们</h3>
+					<ul class="list">
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-top: 1em; margin-left: 2em;">Phone
+								: 12345678901</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">
+								E-mail : <a href="mailto:info(at)fashionpress.com">
+									info(at)fashionpress.com</a>
+							</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">&copy;中国矿业大学管理学院&ensp;电子商务</p>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom">
+		<div class="container">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</body>
+</html>

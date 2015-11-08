@@ -1,0 +1,647 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>Single</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Fashionpress Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/hover_pack.js"></script>
+<link rel="stylesheet" href="css/etalage.css">
+<script src="js/jquery.etalage.min.js"></script>
+<script>
+			$(document).ready(function(){
+				$('#etalage').etalage({
+					thumb_image_width: 300,
+					thumb_image_height: 400,
+					source_image_width: 900,
+					source_image_height: 1200,
+					show_hint: true,
+					click_callback: function(image_anchor, instance_id){
+						alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+					}
+				});
+
+			});
+		</script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+			$(document).ready(function () {	  
+				 	var url = location.href;
+			   	　　//获取pid的参数值
+			   	　　var es=/major=/;
+			   	　　es.exec(url);
+			   	　　var major=RegExp.rightContext;
+			   	　　var aurl = "&major="+major;
+					 $.get("Searchxiangguan", { major:decodeURI(major)}, function(n){
+							var picture = "";
+							var price = "";
+							var html="<div class=\"top_grid2\">";
+								for (var i=0; i < n.rows.length; i++) {
+									var r = n.rows[i];
+									picture=r.picture;
+									price =r.price;
+									if(i%3==0){
+									html += "<div class=\"col-md-4 top_grid1-box1 top_grid2-box2\"><a href=\"single.html\">";
+									}
+									else{
+										html += "<div class=\"col-md-4 top_grid1-box1\"><a href=\"single.html\">";
+									}
+									html +="<div  id=\"xiangguanshuji\" class=\"grid_1\">";
+									html +="<div class=\"b-link-stroke b-animate-go  thickbox\"> <img   id =\"xiangguantupian\"  src=\"images/"+picture+"\" style=\"height:200px;width:auto;\" class=\"img-responsive\" alt=\"\"/> </div>";
+									html +="<div class=\"grid_2\">";
+									html +="<p>更多信息</p>";
+									html +="<ul class=\"grid_2-bottom\">";
+									html +="<li class=\"grid_2-left\">";
+									html +="<p  id=\"xiangguanjiage\">$"+price+"</p>";
+									html +="</li>";
+									html +="<li class=\"grid_2-right\"><a href=\"single.html\" title=\"Get It\" class=\"btn btn-primary btn-normal btn-inline \" target=\"_self\">商品详情</a></li>";
+									html +="<div class=\"clearfix\"> </div>";
+									html +="</ul>";
+									html +="</div>";
+									html +="</div>";
+									html +="</a></div>";		
+									if((i+1)%3==0&&i!=0){
+										html+="<div class=\"clearfix\"></div></div><div class=\"top_grid2\">";
+									}									
+									}
+								html+="</div>";
+								$("#gagaga").append(html);
+						 });
+			});
+	</script>
+
+	
+<script type="text/javascript">
+			   $(document).ready(function () {
+			    var url = location.href;
+			   	　　//获取pid的参数值
+			   	　　var es=/bookid=/;
+			   	　　es.exec(url);
+			   	　　var bookid=RegExp.rightContext;
+			   	　　var aurl = "&bookid="+bookid;
+			
+				$("#xq").remove();	
+			  
+		$.get("Search", { bookid:bookid }, function(n){
+			var store="";
+	   		var bookid="";
+	   		var userid="";
+	   		var peisong="";
+	   		var press="";
+	   		var isbn="";
+	   		var price="";
+	   		var bookname="";
+				for (var i=0; i < n.rows.length; i++) {
+						var r = n.rows[i];
+						store=r.store;
+						bookid=r.bookid;
+						userid=r.userid
+						peisong=r.peisong;
+						press=r.press;
+						isbn=r.isbn;
+						price=r.price;
+						picture=r.picture;
+						bookname=r.bookname;
+						information=r.information;
+						alert("store="+store+",bookid="+bookid+",userid="+userid+",peisong="+peisong+",press="+press+",isbn="+isbn+",price="+price+",picture="+picture+",bookname="+bookname+",information="+information);
+					}
+				 $("img[id='t1']").attr("src","images/"+picture);
+				 $("img[id='t2']").attr('src',"images/"+picture);
+				 $("img[id='t3']").attr('src',"images/"+picture);
+				 $("img[id='t4']").attr('src',"images/"+picture);
+				 $("#miaoshu").text( ""+ information);
+				
+				var html = "";
+    			html+="<div id=\"xq\"><h1>"+bookname+"</h1><br/>";
+    			html+="<p class=\"availability\">出版社 ： "+press+"<br/><br/>";
+    			html+="<span class=\"color\">商品编号："+bookid+" </span><br/><br/>";
+    			html+="<span class=\"color\">卖家编号："+userid+"</span><br/><br/>";
+    			html+="<span class=\"color\">ISBN号："+isbn+" </span></p><br/> ";
+    			html+="<div class=\"price_single\">  <span class=\"actual\">￥"+price+"</span> </div>";
+    			html+="<h2 class=\"quick\">详情:</h2><p class=\"quick_desc\">商家提供数量："+ store+" 本 &nbsp;&nbsp;&nbsp; 配送方式 ："+peisong+"  </p></div>";
+    			html+="<h2 class=\"quick\">商品描述:</h2><p class=\"quick_desc\">"+ information+"</p></div>";
+		   		$("#xiangqing").append(html);
+			   	});
+	$('#horizontalTab').easyResponsiveTabs({
+			           	 type: 'default', 
+			           	 width: 'auto', 
+			           	 fit: true 
+			      	  });
+			   });
+            </script>
+</head>
+<body>
+	<div class="header">
+		<div class="header_top">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo1.png" alt="" /></a>
+				</div>
+				<ul class="shopping_grid">
+					<a href="register.html">
+						<li>注册</li>
+					</a>
+					<a href="login.html">
+						<li>登录</li>
+					</a>
+					<a href="cartsee.html">
+						<li><span class="m_1">购物车</span>&nbsp;&nbsp;(0) &nbsp;<img
+							src="images/bag.png" alt="" /></li>
+					</a>
+					<div class="clearfix"></div>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="h_menu4">
+			<!-- start h_menu4 -->
+			<div class="container">
+				<a class="toggleMenu" href="#">菜单</a>
+				<ul class="nav">
+					<li><a href="index.html" data-hover="Home">&emsp;&emsp;&emsp;首页&emsp;&emsp;&emsp;</a></li>
+					<li><a href="search.html" data-hover="Search">&emsp;&emsp;&emsp;高级搜索&emsp;&emsp;&emsp;</a></li>
+					<li><a href="subscribe.html" data-hover="Subscribe">&emsp;&emsp;&emsp;求购通道&emsp;&emsp;&emsp;</a></li>
+					<li><a href="careers.html" data-hover="careers">&emsp;&emsp;&emsp;个人中心&emsp;&emsp;&emsp;</a></li>
+					<li><a href="contact.html" data-hover="Contact">&emsp;&emsp;&emsp;联系我们&emsp;&emsp;&emsp;</a></li>
+					<!--
+					<li><a href="register.html" data-hover="Company Registration">Company Registration</a></li>
+					<li><a href="wishlist.html" data-hover="Wish List">Wish List</a></li>
+					-->
+				</ul>
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div>
+			<!-- end h_menu4 -->
+		</div>
+	</div>
+	<div class="column_center">
+		<div class="container">
+			<div class="search">
+				<div class="row">
+					<div class="col-lg-7 col-xs-2"></div>
+					<div class="stay_right col-lg-5 col-xs-10">
+						<label
+							style="text-align: right; vertical-align: middle; font-size: 15px; color: #DF1F26">搜&ensp;索&ensp;</label>
+						<input type="text" value="" onfocus="this.value = '';"
+							onblur="if (this.value == '') {this.value = '';}"> <input
+							type="submit" value="">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="content_top">
+			<div class="container">
+				<div class="col-md-3 sidebar_box">
+					<div class="sidebar">
+						<div class="menu_box">
+							<h3 class="menu_head">商品列表</h3>
+							<ul class="menu">
+								<li class="item1"><a href="#"><img class="arrow-img"
+										src="images/f_menu.png" alt="" />&ensp;通识课本</a>
+									<ul class="cute">
+										<li class="subitem1"><a href="#">&emsp;&emsp;高等数学 </a></li>
+										<li class="subitem2"><a href="#">&emsp;&emsp;大学英语 </a></li>
+										<li class="subitem3"><a href="#">&emsp;&emsp;线性代数 </a></li>
+										<li class="subitem4"><a href="#">&emsp;&emsp;概率论与数理统计
+										</a></li>
+										<li class="subitem5"><a href="#">&emsp;&emsp;VISUAL
+												BASIC </a></li>
+										<li class="subitem6"><a href="#">&emsp;&emsp;C++ </a></li>
+										<li class="subitem7"><a href="#">&emsp;&emsp;其他 </a></li>
+									</ul></li>
+								<li class="item2"><a href="#"><img class="arrow-img"
+										src="images/f_menu.png" alt="" />&ensp;专业课本</a>
+									<ul class="cute">
+										<li class="subitem1"><a href="#">&emsp;&emsp;矿业学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;采矿工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;工业工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;交通运输</a></li>
+											</ul></li>
+										<li class="subitem2"><a href="#">&emsp;&emsp;安全学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;消防工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;安全工程</a></li>
+											</ul></li>
+										<li class="subitem3"><a href="#">&emsp;&emsp;力建学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;土木工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;工程力学</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;建筑学</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;建筑环境与能源应用工程</a></li>
+												<li class="subitem5"><a href="#">&emsp;&emsp;&emsp;&emsp;工程管理</a></li>
+											</ul></li>
+										<li class="subitem4"><a href="#">&emsp;&emsp;机电学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;机械工程及自动化</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;测试技术与仪器</a></li>
+											</ul></li>
+										<li class="subitem5"><a href="#">&emsp;&emsp;信电学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;电气工程及其自动化</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;信息工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;电子科学与技术</a></li>
+											</ul></li>
+										<li class="subitem6"><a href="#">&emsp;&emsp;资源学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;地质工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;水文与水资源工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;地球物理学</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;资源环境与城乡规划管理</a></li>
+												<li class="subitem5"><a href="#">&emsp;&emsp;&emsp;&emsp;煤及煤层气工程</a></li>
+											</ul></li>
+										<li class="subitem7"><a href="#">&emsp;&emsp;化工学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;矿物加工工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;化学工程与工艺</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;应用化学</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;生物工程</a></li>
+												<li class="subitem5"><a href="#">&emsp;&emsp;&emsp;&emsp;过程装备与控制工程</a></li>
+											</ul></li>
+										<li class="subitem8"><a href="#">&emsp;&emsp;环测学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;测绘科学与技术</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;环境科学与工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;公共管理</a></li>
+											</ul></li>
+										<li class="subitem9"><a href="#">&emsp;&emsp;电力学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;能源与动力工程</a></li>
+											</ul></li>
+										<li class="subitem10"><a href="#">&emsp;&emsp;材料学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;材料科学与工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;材料成型与控制工程</a></li>
+											</ul></li>
+										<li class="subitem11"><a href="#">&emsp;&emsp;理学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;数学</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;物理学</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;统计学</a></li>
+											</ul></li>
+										<li class="subitem12"><a href="#">&emsp;&emsp;计算机学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;计算机科学与技术</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;电子信息科学与技术</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;信息安全</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;网络工程</a></li>
+											</ul></li>
+										<li class="subitem13"><a href="#">&emsp;&emsp;管理学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;电子商务</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;工商管理</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;国际经济与贸易</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;金融学</a></li>
+												<li class="subitem5"><a href="#">&emsp;&emsp;&emsp;&emsp;会计学</a></li>
+												<li class="subitem6"><a href="#">&emsp;&emsp;&emsp;&emsp;人力资源管理</a></li>
+												<li class="subitem7"><a href="#">&emsp;&emsp;&emsp;&emsp;市场营销</a></li>
+											</ul></li>
+										<li class="subitem14"><a href="#">&emsp;&emsp;文法学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;行政管理</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;汉语言文学</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;法学</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;广播电视新闻学</a></li>
+												<li class="subitem5"><a href="#">&emsp;&emsp;&emsp;&emsp;社会工作</a></li>
+											</ul></li>
+										<li class="subitem16"><a href="#">&emsp;&emsp;外文学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;英语</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;德语</a></li>
+											</ul></li>
+										<li class="subitem17"><a href="#">&emsp;&emsp;艺术学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;环境设计</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;工业设计</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;音乐学</a></li>
+											</ul></li>
+										<li class="subitem18"><a href="#">&emsp;&emsp;体育学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;采矿工程</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;工业工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;交通运输</a></li>
+											</ul></li>
+										<li class="subitem19"><a href="#">&emsp;&emsp;国际学院 </a>
+											<ul class="cute">
+												<li class="subitem1"><a href="#">&emsp;&emsp;&emsp;&emsp;电气工程与自动化</a></li>
+												<li class="subitem2"><a href="#">&emsp;&emsp;&emsp;&emsp;土木工程</a></li>
+												<li class="subitem3"><a href="#">&emsp;&emsp;&emsp;&emsp;商学</a></li>
+												<li class="subitem4"><a href="#">&emsp;&emsp;&emsp;&emsp;机械工程及自动化</a></li>
+											</ul></li>
+									</ul></li>
+								<li class="item3"><a href="#"><img class="arrow-img"
+										src="images/f_menu.png" alt="" />&ensp;休闲读物</a>
+									<ul class="cute">
+										<li class="subitem1"><a href="#">&emsp;&emsp;文学</a></li>
+										<li class="subitem2"><a href="#">&emsp;&emsp;杂志</a></li>
+									</ul></li>
+							</ul>
+						</div>
+						<!--initiate accordion-->
+						<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul'),
+			           menu_a  = $('.menu  > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+			
+			});
+		</script>
+						<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul > li > ul'),
+			           menu_a  = $('.menu > li > ul > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+			
+			});
+		</script>
+					</div>
+					<div class="clients">
+						<h3 align="center">求购板</h3>
+						<h4>急求一本高等数学</h4>
+						<ul class="user">
+							<i class="user_icon"></i>
+							<li class="user_desc"><a href="#">
+									<p>用户名没想好</p>
+							</a></li>
+							<div class="clearfix"></div>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9 single_right">
+					<div class="single_top">
+						<div class="single_grid">
+							<div id="gaga" class="grid images_3_of_2">
+								<ul id="etalage">
+									<li><img id="t1" class="etalage_thumb_image"
+										src="images/shujujiegou.jpg" /> <img id="t2"
+										class="etalage_source_image img-responsive"
+										src="images/shujujiegou.jpg" title="" /> </li>
+									<li><img id="t3"
+										class="etalage_thumb_image img-responsive"
+										src="images/maogai.jpg" /> <img
+										class="etalage_source_image img-responsive" id="t4"
+										src="images/maogai.jpg" title="" /></li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="desc1 span_3_of_2">
+								<div id="xiangqing">
+									<div id="xq">
+										<h1>书名</h1>
+										<p class="availability">
+											?????: <span class="color">凤飞飞</span>
+										</p>
+										<div class="price_single">
+											<span class="actual">￥120.00</span>
+										</div>
+										<h2 class="quick">详情:</h2>
+										<p class="quick_desc">倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒倍儿棒</p>
+									</div>
+								</div>
+								<div class="quantity_box">
+										<span>数量:</span>
+										<input type="text" name="number" id="amount" size="3" value="1">&emsp;
+									<a href="reservation.html" title="Online Reservation"
+									class="btn bt1 btn-primary btn-normal btn-inline "
+									target="_self">加入购物车</a><div class="clearfix"></div>
+								</div>
+								
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					
+					<h3 class="single_head">相关书籍</h3>
+					<div id="gagaga" class="related_products">
+					<div class="top_grid2">
+					
+					
+						<div class="col-md-4 top_grid1-box1 top_grid2-box2">
+							<a href="single.html">
+								<div id="xiangguanshuji" class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img id="xiangguantupian" src="images/p12.jpg"
+											class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息</p>
+
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p id="xiangguanjiage">$99</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 top_grid1-box1">
+							<a href="single.html">
+								<div class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img src="images/p13.jpg" class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息</p>
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p>
+													$99<small>.33</small>
+												</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 top_grid1-box1">
+							<a href="single.html">
+								<div class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img src="images/p14.jpg" class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息/p>
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p>
+													$99<small>.33</small>
+												</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="top_grid2">
+						<div class="col-md-4 top_grid1-box1 top_grid2-box2">
+							<a href="single.html">
+								<div class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img src="images/p9.jpg" class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息</p>
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p>
+													$99<small>.33</small>
+												</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 top_grid1-box1">
+							<a href="single.html">
+								<div class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img src="images/p10.jpg" class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息</p>
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p>
+													$99<small>.33</small>
+												</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-4 top_grid1-box1">
+							<a href="single.html">
+								<div class="grid_1">
+									<div class="b-link-stroke b-animate-go  thickbox">
+										<img src="images/p11.jpg" class="img-responsive" alt="" />
+									</div>
+									<div class="grid_2">
+										<p>更多信息</p>
+										<ul class="grid_2-bottom">
+											<li class="grid_2-left">
+												<p>
+													$99<small>.33</small>
+												</p>
+											</li>
+											<li class="grid_2-right"><a href="single.html"
+												title="Get It"
+												class="btn btn-primary btn-normal btn-inline "
+												target="_self">商品详情</a></li>
+											<div class="clearfix"></div>
+										</ul>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="footer_bg"></div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xs-12 f_grid1">
+					<h3 style="margin-left: 1em;">关于我们</h3>
+					<a href="#" style="margin-left: 1.5em;"><img
+						src="images/logo1.png" height="20" width="auto" alt="" /></a>
+					<p style="text-indent: 2em;">哀伤的风格回家看了请问认同与欧赔自行车vb你们啊是的法国航空请问认同与io的风格和健康自行车vb你们更好</p>
+				</div>
+				<div class="col-md-6 col-xs-12 f_grid3">
+					<h3 style="margin-left: 1em;">联系我们</h3>
+					<ul class="list">
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-top: 1em; margin-left: 2em;">Phone
+								: 12345678901</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">
+								E-mail : <a href="mailto:info(at)fashionpress.com">
+									info(at)fashionpress.com</a>
+							</p>
+						</li>
+						<li>
+							<p
+								style="font: 700 14px/14px 'Lato', 微软雅黑; line-height: 1.5em; margin-left: 2em;">&copy;中国矿业大学管理学院&ensp;电子商务</p>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer_bottom">
+		<div class="container">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</body>
+</html>
